@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* CSS for buttons */
+    input[type="button"] {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+
+    input[type="button"]:hover {
+      background-color: #6630ca;
+    }
+
+    /* css for table */
+    #tabul {
+      border-collapse: collapse;
+      width: 50%;
+      margin-bottom: 20px;
+    }
+
+    #tabul td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+   
+
+    /* CSS for message area */
+    #message {
+      color: red;
+      font-style: italic;
+    }
+  </style>
+</head>
+
+<body>
+<table id="tabul" border="1"> 
+  <tr>
+    <td>Row1 Col1</td> 
+    <td>Row1 Col2</td>
+  </tr> 
+  <tr>
+    <td>Row2 Col1</td> 
+    <td>Row2 Col2</td>
+  </tr> 
+    <tr>
+    <td>Row3 Col1</td> 
+    <td>Row3 Col2</td>
+  </tr> 
+    <tr>
+    <td>Row4 Col1</td> 
+    <td>Row4 Col2</td>
+  </tr> 
+    <tr>
+    <td>Row5 Col1</td> 
+    <td>Row5 Col2</td>
+  </tr> 
+</table>
+
+<br>
+ <div>
+<input type="button" onclick="insertRowBottom()" value="Insert row">  
+<input type="button" onclick="deleteRowTop()" value="Delete row">  
+</div>
+
+<!-- div separates the section for the specified ID -->
+<br>
+
+<div id="message"></div> <!-- Message area -->
+<script>
+
+var x = 5;
+
+function insertRowBottom() {
+  var tbl = document.getElementById("tabul");
+  x++;
+  var rw = tbl.insertRow(-1);
+  var tablecell1 = rw.insertCell(0);
+  var tablecell2 = rw.insertCell(1);
+  tablecell1.innerHTML = "Row " + x + " Col 1";
+  tablecell2.innerHTML = "Row " + x + "  Col 2";
+  document.getElementById("message").innerHTML = ""; // Clear the message if rows exist
+
+}
+
+function deleteRowTop() {
+  var tbl = document.getElementById("tabul");
+  if (tbl.rows.length > 0) {
+    tbl.deleteRow(0);
+    document.getElementById("message").innerHTML = ""; // Clear the message if rows exist
+  } else {
+    document.getElementById("message").innerHTML = "Message: No more rows to delete"; // Show message
+  }
+}
+</script>
+</body>
+</html>
